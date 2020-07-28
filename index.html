@@ -9,19 +9,11 @@
 
 <body>
     <script type="text/javascript">
-        // ******** Basic sketch/TO-DO ********
-        // 1. computerPlay function to get computerSelection
-        // A way to get a number 0, 1, 2 randomly
-        // conditionals to assign computerSelection ie: if 0; play = "rock"
-        // 2. function To make player's input case insensitive
-        // store input into a variable 
-        // toUpperCase it and store it in new variable
-        // 3. Make it play One round 
-        // 
+        var playerSelection, computerSelection, playerRoundsWon = 0,
+            compRoundsWon = 0;
 
-var playerSelection, computerSelection;
 
-        // chooses computer's play:
+        // Choose computer's play:
         function computerPlay() {
             let comPlayNum = Math.floor(Math.random() * 3);
             if (comPlayNum == 0) {
@@ -33,32 +25,72 @@ var playerSelection, computerSelection;
             }
         }
 
+
+        // Play one round:
         function playRound(playerSelection, computerSelection) {
-            let playerInput = window.prompt("Type your Play: rock, paper, scissors?", "rock");
-            playerSelection = playerInput.toLowerCase();
+
+            // Get selections and turn player selection lowercase:
+            playerSelection = window.prompt("Type your Play: rock, paper, scissors?", "rock").toLowerCase();
             computerSelection = computerPlay();
+
+            // Decide the outcome:
             if ((playerSelection == "rock" && computerSelection == "rock")) {
-                return ("It's a tie, stop copying me!") // rock vs rock
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". It's a tie, stop copying me!") // rock vs rock - tie
+                // *tie*
             } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
-                return ("You lose! get good LMAO.") // rock vs paper
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". You lose! get good LMAO."); // rock vs paper - comp wins
+                compRoundsWon++;
             } else if ((playerSelection == "rock") && (computerSelection == "scissors")) {
-                return ("You win! But not for long.") // rock vs scissors
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". You win! But not for long.") // rock vs scissors - player wins
+                playerRoundsWon++;
             } else if ((playerSelection == "paper") && (computerSelection == "paper")) {
-                return ("It's a tie, stop copying me!") // paper vs paper
-            } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
-                return ("You lose! get good LMAO.") // paper vs rock
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". It's a tie, stop copying me!") // paper vs paper - tie
+                // *tie*
             } else if ((playerSelection == "paper") && (computerSelection == "scissors")) {
-                return ("You win! But not for long.") // paper vs scissors
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". You lose! get good LMAO.") // paper vs scissors - comp wins 
+                compRoundsWon++;
+            } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". You win! But not for long.") // paper vs rock - player wins
+                playerRoundsWon++;
             } else if ((playerSelection == "scissors") && (computerSelection == "scissors")) {
-                return ("It's a tie, stop copying me!") // scissors vs scissors
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". It's a tie, stop copying me!") // scissors vs scissors - tie
+                // *tie*
             } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
-                return ("You lose! get good LMAO.") // scissors vs paper
+                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
+                    ". You lose! get good LMAO.") // scissors vs paper - player wins
+                playerRoundsWon++;
             } else if ((playerSelection == "scissors") && (computerSelection == "rock")) {
                 return ("You win! But not for long.") // scissors vs rock
+                compRoundsWon++;
             }
         }
 
-        console.log(playRound(playerSelection, computerSelection));
+
+        // Play 5 rounds and log the winner:
+        function game() {
+            console.log(playRound(playerSelection, computerSelection))
+            console.log(playRound(playerSelection, computerSelection))
+            console.log(playRound(playerSelection, computerSelection))
+            console.log(playRound(playerSelection, computerSelection))
+            console.log(playRound(playerSelection, computerSelection))
+            if (compRoundsWon > playerRoundsWon) {
+                console.log("I win this game");
+            } else if (compRoundsWon < playerRoundsWon) {
+                console.log("You win the game")
+            } else {
+                console.log("We tie!")
+            }
+        }
+
+        game();
+        // YAY!
     </script>
 
 </body>
