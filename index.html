@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Sciccors</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // ******** Basic sketch/TO-DO ********
+        // 1. computerPlay function to get computerSelection
+        // A way to get a number 0, 1, 2 randomly
+        // conditionals to assign computerSelection ie: if 0; play = "rock"
+        // 2. function To make player's input case insensitive
+        // store input into a variable 
+        // toUpperCase it and store it in new variable
+
+        var computerSelection;
+
+        function computerPlay() {
+            let comPlayNum = Math.floor(Math.random() * 3);
+            if (comPlayNum == 0) {
+                var computerSelection = "rock"
+            } else if (comPlayNum == 1) {
+                var computerSelection = "paper"
+            } else if (comPlayNum == 2) {
+                var computerSelection = "scissors"
+            }
+            console.log(computerSelection)
+        }
+
+        computerPlay();
+    </script>
+
+</body>
+
+</html>
