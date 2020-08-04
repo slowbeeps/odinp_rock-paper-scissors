@@ -3,105 +3,26 @@
 
 <head>
     <title>Rock Paper Scissors</title>
-    <style>
-        div {
-            max-width: 400px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-    <div>
-        <h1>Play rock paper scissors</h1>
-        <p>Please open your console to play the game</p>
-    </div>
+    <main>
+        <div id="btns-div">
+            <div class="btn" id="playgame-div">Rock Paper Scissors</div>
+            <div id="selections-div">
+                <div class="btn" id="rock">rock</div>
+                <div class="btn" id="paper">paper</div>
+                <div class="btn" id="scissors">scissors</div>
+            </div>
+        </div>
+        <div id="results-div">
+            <div id="message-div">Choose your play</div>
+            <div id="score-div"></div>
+        </div>
+    </main>
 
-    <script type="text/javascript">
-        let playerSelection, computerSelection, playerRoundsWon = 0,
-            compRoundsWon = 0;
-
-
-        // Choose computer's play:
-        function computerPlay() {
-            let comPlayNum = Math.floor(Math.random() * 3);
-            if (comPlayNum == 0) {
-                return "rock";
-            } else if (comPlayNum == 1) {
-                return "paper";
-            } else if (comPlayNum == 2) {
-                return "scissors";
-            }
-        }
-
-
-        // Play one round:
-        function playRound(playerSelection, computerSelection) {
-
-            // Get selections and turn player selection lowercase:
-            playerSelection = window.prompt("Type your Play: rock, paper, scissors?", "rock").toLowerCase();
-            computerSelection = computerPlay();
-
-            // Decide the outcome:
-            if ((playerSelection == "rock" && computerSelection == "rock")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". It's a tie, stop copying me!") // rock vs rock - tie
-                // *tie*
-            } else if ((playerSelection == "rock") && (computerSelection == "paper")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". You lose! get good LMAO."); // rock vs paper - comp wins
-                compRoundsWon++;
-            } else if ((playerSelection == "rock") && (computerSelection == "scissors")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". You win! But not for long.") // rock vs scissors - player wins
-                playerRoundsWon++;
-            } else if ((playerSelection == "paper") && (computerSelection == "paper")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". It's a tie, stop copying me!") // paper vs paper - tie
-                // *tie*
-            } else if ((playerSelection == "paper") && (computerSelection == "scissors")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". You lose! get good LMAO.") // paper vs scissors - comp wins 
-                compRoundsWon++;
-            } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". You win! But not for long.") // paper vs rock - player wins
-                playerRoundsWon++;
-            } else if ((playerSelection == "scissors") && (computerSelection == "scissors")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". It's a tie, stop copying me!") // scissors vs scissors - tie
-                // *tie*
-            } else if ((playerSelection == "scissors") && (computerSelection == "paper")) {
-                return ("Computer chose " + computerSelection + ", and You chose " + playerSelection +
-                    ". You lose! get good LMAO.") // scissors vs paper - player wins
-                playerRoundsWon++;
-            } else if ((playerSelection == "scissors") && (computerSelection == "rock")) {
-                return ("You win! But not for long.") // scissors vs rock
-                compRoundsWon++;
-            }
-        }
-
-
-        // Play 5 rounds and log the winner:
-        function game() {
-            console.log(playRound(playerSelection, computerSelection))
-            console.log(playRound(playerSelection, computerSelection))
-            console.log(playRound(playerSelection, computerSelection))
-            console.log(playRound(playerSelection, computerSelection))
-            console.log(playRound(playerSelection, computerSelection))
-            if (compRoundsWon > playerRoundsWon) {
-                console.log("I win this game");
-            } else if (compRoundsWon < playerRoundsWon) {
-                console.log("You win the game")
-            } else {
-                console.log("We tie!")
-            }
-        }
-
-        game();
-        // YAY!
-    </script>
-
+    <script type="text/javascript" src="main.js" defer></script>
 </body>
 
 </html>
